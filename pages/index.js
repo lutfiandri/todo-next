@@ -1,65 +1,33 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import TodoList from '../components/todoList'
+import InputTodo from '../components/inputTodo'
 
 export default function Home() {
+  const todos = [
+    { title: "Presensi", desc: "lorem ipsum" },
+    { title: "Presensi2", desc: "lorem ipsum" },
+    { title: "Presensi3", desc: "lorem ipsum" },
+    { title: "Presensi4", desc: "lorem ipsumdgdfg sdhfjd dskfhsdjfk dskfhsdjf isudhfsjd sdfhsdjf sdjfsjdf sdjhfjsdf sjhdfbsghgfyae kwuyegryu fuyaegf uehfhe eusgfsdhf sdufjhsadf" },
+  ]
+
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Todo List</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main className="container flex flex-col py-5 space-y-8">
+        <InputTodo />
+        <div className="space-y-4">
+          <h2 className="text-xs text-gray-700 tracking-wide">PINNED</h2>
+          <TodoList todos={todos} />
+        </div>
+        <div className="space-y-4">
+          <h2 className="text-xs text-gray-700 tracking-wide">OTHERS</h2>
+          <TodoList todos={todos} />
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </>
   )
 }
