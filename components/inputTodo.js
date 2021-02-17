@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function InputTodo() {
   const [focus, setFocus] = useState(false);
-
-  useEffect(() => {
-    console.log(focus);
-  }, [focus])
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -19,7 +15,7 @@ export default function InputTodo() {
         <input 
           type="text" 
           placeholder="Title" 
-          className="border-none focus:ring-0 font-semibold" 
+          className={`${ !focus && 'hidden' } border-none focus:ring-0 font-semibold`} 
         />
         <textarea 
           onFocus={() => setFocus(true)}
@@ -28,7 +24,7 @@ export default function InputTodo() {
           placeholder="Take a todo..." 
           className="border-none focus:ring-0 text-sm"
         />
-        <div className="flex flex-row-reverse px-3 py-1 text-sm">
+        <div className={`${ !focus && 'hidden' } flex flex-row-reverse px-3 py-1 text-sm`}>
           <input
             type="button" 
             onClick={handleClose} 
